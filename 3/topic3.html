@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Тема 03 — Первичные сети</title>
+
+  <link rel="icon" type="image/png" href="../img/icon.png?v=4">
+  <link rel="shortcut icon" type="image/png" href="../img/icon.png?v=4">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="topic3css.css">
+  <script src="topic3js.js" defer></script>
+</head>
+
+<body>
+  <div class="pink-orb orb-one"></div>
+  <div class="pink-orb orb-two"></div>
+
+  <header class="topbar page-width">
+    <a class="brand" href="../index.html">
+      <span class="brand-icon">⌁</span>
+      <span>NET<span>/</span>WORK</span>
+    </a>
+
+    <div class="chapter-label">CHAPTER 03 / TRANSMISSION</div>
+
+    <a class="back-link" href="../index.html">← На главную</a>
+  </header>
+
+  <main class="page-width">
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          КОМПЬЮТЕРНЫЕ СЕТИ · ТЕМА 03
+        </div>
+
+        <p class="hero-overline">THE NETWORK INFRASTRUCTURE</p>
+
+        <h1>Первичные<br>сети<span>.</span></h1>
+
+        <p class="hero-description">
+          От цифровых потоков до оптических магистралей —
+          изучаем технологии, которые обеспечивают передачу
+          больших объёмов информации.
+        </p>
+
+        <a href="#technologies" class="hero-button">
+          Исследовать технологии
+          <span>↓</span>
+        </a>
+
+        <div class="hero-stats">
+          <div>
+            <strong>04</strong>
+            <span>технологии</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <strong>01</strong>
+            <span>раздел</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="art-ring ring-one"></div>
+        <div class="art-ring ring-two"></div>
+
+        <div class="pink-disc"></div>
+
+        <div class="art-label label-top">
+          <span class="label-dot"></span>
+          OPTICAL NETWORK
+        </div>
+
+        <div class="signal-window">
+          <div class="window-header">
+            <div class="window-controls">
+              <i></i><i></i><i></i>
+            </div>
+            <span>TRANSMISSION FLOW</span>
+          </div>
+
+          <div class="signal-stage">
+            <div class="signal-node node-source">
+              <span>01</span>
+              <strong>IN</strong>
+            </div>
+
+            <div class="signal-path path-one">
+              <span></span><span></span><span></span>
+            </div>
+
+            <div class="signal-node node-core">
+              <span>↗</span>
+              <strong>CORE</strong>
+            </div>
+
+            <div class="signal-path path-two">
+              <span></span><span></span><span></span>
+            </div>
+
+            <div class="signal-node node-target">
+              <span>02</span>
+              <strong>OUT</strong>
+            </div>
+          </div>
+
+          <div class="window-footer">
+            <span>DATA TRANSMISSION</span>
+            <strong>ACTIVE <i></i></strong>
+          </div>
+        </div>
+
+        <div class="floating-chip chip-top">PDH / SDH</div>
+        <div class="floating-chip chip-bottom">DWDM + OTN</div>
+
+        <div class="art-caption">
+          <span>01 — 04</span>
+          <span>NETWORK SYSTEMS</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="technology-section" id="technologies">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">THE TECHNOLOGY COLLECTION</p>
+          <h2>Четыре технологии.<br><span>Одна сеть.</span></h2>
+        </div>
+
+        <p class="section-description">
+          Выбери технологию, чтобы узнать её назначение,
+          принцип работы и основные особенности.
+        </p>
+      </div>
+
+      <div class="technology-grid">
+
+        <button class="technology-card pdh-card"
+                type="button"
+                data-subtopic="pdh"
+                aria-expanded="false">
+
+          <span class="technology-top">
+            <span class="tech-number">01</span>
+            <span class="tech-category">DIGITAL HIERARCHY</span>
+          </span>
+
+          <span class="tech-illustration pdh-illustration">
+            <span class="stack stack-one"></span>
+            <span class="stack stack-two"></span>
+            <span class="stack stack-three"></span>
+            <span class="stack stack-four"></span>
+          </span>
+
+          <span class="tech-name">PDH</span>
+
+          <span class="tech-full-name">
+            Plesiochronous Digital Hierarchy
+          </span>
+
+          <span class="tech-description">
+            Плезиохронная цифровая иерархия
+          </span>
+
+          <span class="tech-footer">
+            <span>Изучить технологию</span>
+            <span class="tech-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="technology-card sdh-card"
+                type="button"
+                data-subtopic="sdh"
+                aria-expanded="false">
+
+          <span class="technology-top">
+            <span class="tech-number">02</span>
+            <span class="tech-category">SYNCHRONOUS NETWORK</span>
+          </span>
+
+          <span class="tech-illustration sdh-illustration">
+            <span class="sdh-line line-one"></span>
+            <span class="sdh-line line-two"></span>
+            <span class="sdh-line line-three"></span>
+            <span class="sdh-point point-one"></span>
+            <span class="sdh-point point-two"></span>
+            <span class="sdh-point point-three"></span>
+            <span class="sdh-point point-four"></span>
+          </span>
+
+          <span class="tech-name">SONET / SDH</span>
+
+          <span class="tech-full-name">
+            Synchronous Optical Network
+          </span>
+
+          <span class="tech-description">
+            Синхронная передача цифровых данных
+          </span>
+
+          <span class="tech-footer">
+            <span>Изучить технологию</span>
+            <span class="tech-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="technology-card dwdm-card"
+                type="button"
+                data-subtopic="dwdm"
+                aria-expanded="false">
+
+          <span class="technology-top">
+            <span class="tech-number">03</span>
+            <span class="tech-category">OPTICAL MULTIPLEXING</span>
+          </span>
+
+          <span class="tech-illustration dwdm-illustration">
+            <span class="light-beam beam-one"></span>
+            <span class="light-beam beam-two"></span>
+            <span class="light-beam beam-three"></span>
+            <span class="light-beam beam-four"></span>
+            <span class="beam-core"></span>
+          </span>
+
+          <span class="tech-name">DWDM</span>
+
+          <span class="tech-full-name">
+            Dense Wavelength Division Multiplexing
+          </span>
+
+          <span class="tech-description">
+            Уплотнение каналов по длинам волн
+          </span>
+
+          <span class="tech-footer">
+            <span>Изучить технологию</span>
+            <span class="tech-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="technology-card otn-card"
+                type="button"
+                data-subtopic="otn"
+                aria-expanded="false">
+
+          <span class="technology-top">
+            <span class="tech-number">04</span>
+            <span class="tech-category">OPTICAL TRANSPORT</span>
+          </span>
+
+          <span class="tech-illustration otn-illustration">
+            <span class="otn-box box-one">O</span>
+            <span class="otn-box box-two">T</span>
+            <span class="otn-box box-three">N</span>
+            <span class="otn-connector connector-one"></span>
+            <span class="otn-connector connector-two"></span>
+          </span>
+
+          <span class="tech-name">OTN</span>
+
+          <span class="tech-full-name">
+            Optical Transport Network
+          </span>
+
+          <span class="tech-description">
+            Оптическая транспортная сеть
+          </span>
+
+          <span class="tech-footer">
+            <span>Изучить технологию</span>
+            <span class="tech-arrow">↗</span>
+          </span>
+        </button>
+
+      </div>
+
+      <div class="detail-panel" id="detail-panel" hidden>
+
+  <div class="detail-top">
+    <div>
+      <p class="section-kicker">TECHNOLOGY DETAILS</p>
+      <h3 id="detail-title"></h3>
+    </div>
+
+    <button
+      type="button"
+      class="detail-close"
+      id="close-detail"
+      aria-label="Закрыть"
+    >×</button>
+  </div>
+
+  <p class="detail-text" id="detail-text"></p>
+
+  <div class="detail-facts">
+    <div class="fact-icon">✦</div>
+    <div>
+      <strong>Главная особенность</strong>
+      <p id="detail-note"></p>
+    </div>
+  </div>
+
+  <section class="learning-block">
+    <div class="learning-heading">
+      <span class="learning-icon">↗</span>
+      <div>
+        <p class="section-kicker">VISUAL EXPLANATION</p>
+        <h4 id="visual-title">Как работает технология</h4>
+      </div>
+    </div>
+
+    <div id="visual-content" class="visual-content"></div>
+  </section>
+
+  <section class="learning-block">
+    <div class="learning-heading">
+      <span class="learning-icon aqua-icon">◈</span>
+      <div>
+        <p class="section-kicker">QUICK COMPARISON</p>
+        <h4>Запомни главное</h4>
+      </div>
+    </div>
+
+    <div id="comparison-content" class="comparison-grid"></div>
+  </section>
+
+</div>
+
+    </section>
+
+  </main>
+
+  <footer class="page-width footer">
+    <span>NET/WORK <i>©</i> Компьютерные сети</span>
+    <span>CHAPTER 03 — PRIMARY NETWORKS</span>
+  </footer>
+</body>
+</html>

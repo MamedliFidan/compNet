@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 02 — Модуляция и кодирование</title>
+
+  <link rel="icon" type="image/png" href="../img/icon.png?v=4">
+  <link rel="shortcut icon" type="image/png" href="../img/icon.png?v=4">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="topic2css.css">
+  <script src="topic2js.js" defer></script>
+</head>
+</head>
+
+<body>
+  <header class="topbar page-width">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">⌁</span>
+      <span>NET<span class="brand-slash">/</span>WORK</span>
+    </a>
+
+    <a class="back-link" href="../index.html">← На главную</a>
+  </header>
+
+  <main class="page-width">
+
+    <section class="topic-hero">
+      <div class="hero-text">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          САМОСТОЯТЕЛЬНАЯ РАБОТА · РАЗДЕЛ 02
+        </div>
+
+        <h1>Модуляция<br>и <span>кодирование.</span></h1>
+
+        <p class="hero-description">
+          Как преобразуются сигналы и каким образом компьютеры
+          представляют и передают цифровую информацию.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-pill"><span>02</span> подтемы</span>
+          <span class="meta-pill"><span>02</span> учебный раздел</span>
+        </div>
+      </div>
+
+      <div class="signal-visual">
+        <div class="signal-orbit"></div>
+
+        <div class="signal-card">
+          <div class="signal-card-header">
+            <span>SIGNAL LAB</span>
+            <span class="live-dot"></span>
+          </div>
+
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+          <div class="wave wave-three"></div>
+
+          <div class="signal-caption">
+            <strong>01 / 02</strong>
+            <span>Сигнал → данные</span>
+          </div>
+        </div>
+
+        <div class="floating-tag tag-top">1010 1101</div>
+        <div class="floating-tag tag-bottom">DIGITAL SIGNAL</div>
+      </div>
+    </section>
+
+    <section class="subtopics">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">СОДЕРЖАНИЕ РАЗДЕЛА</p>
+          <h2>Две ключевые темы</h2>
+        </div>
+
+        <p class="section-description">
+          Нажми на карточку, чтобы открыть объяснение.
+        </p>
+      </div>
+
+      <div class="subtopic-grid">
+
+        <button class="subtopic-card card-coral"
+                type="button"
+                data-subtopic="modulation"
+                aria-expanded="false">
+
+          <span class="card-number">04</span>
+          <span class="card-icon">〰</span>
+
+          <span class="card-title">
+            Модуляция при передаче дискретных и аналоговых сигналов
+          </span>
+
+          <span class="card-description">
+            Амплитуда, частота и фаза сигнала.
+          </span>
+
+          <span class="card-bottom">
+            <span>Изучить подтему</span>
+            <span class="card-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="subtopic-card card-aqua"
+                type="button"
+                data-subtopic="encoding"
+                aria-expanded="false">
+
+          <span class="card-number">05</span>
+          <span class="card-icon">101</span>
+
+          <span class="card-title">
+            Методы кодирования. Код Манчестера
+          </span>
+
+          <span class="card-description">
+            Как представить биты с помощью сигналов.
+          </span>
+
+          <span class="card-bottom">
+            <span>Изучить подтему</span>
+            <span class="card-arrow">↗</span>
+          </span>
+        </button>
+
+      </div>
+
+      <div class="detail-panel" id="detail-panel" hidden>
+
+  <div class="detail-heading">
+    <div>
+      <p class="section-kicker">SIGNAL LAB · ИЗУЧАЕМ</p>
+      <h3 id="detail-title"></h3>
+    </div>
+
+    <button class="close-detail"
+            id="close-detail"
+            type="button"
+            aria-label="Закрыть">×</button>
+  </div>
+
+  <p id="detail-text" class="detail-main-text"></p>
+
+  <!-- Визуализация -->
+  <div class="visual-lab">
+    <div class="visual-lab-heading">
+      <span class="lab-icon">⌁</span>
+      <div>
+        <h4 id="visual-title">Визуализация сигнала</h4>
+        <p>Посмотри, как передаются данные</p>
+      </div>
+      <span class="lab-status">INTERACTIVE</span>
+    </div>
+
+    <div id="visual-content" class="visual-content"></div>
+  </div>
+
+  <!-- Сравнение методов -->
+  <div class="comparison-box">
+    <h4>Краткое сравнение</h4>
+
+    <div class="comparison-grid" id="comparison-content"></div>
+  </div>
+
+  <!-- Проверка знаний -->
+  <div class="mini-quiz">
+    <div class="quiz-heading">
+      <span class="quiz-icon">✳</span>
+      <div>
+        <p class="section-kicker">ПРОВЕРЬ СЕБЯ</p>
+        <h4 id="quiz-question"></h4>
+      </div>
+    </div>
+
+    <div id="quiz-options" class="quiz-options"></div>
+    <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
+  </div>
+
+  <div class="detail-note">
+    <span>✦</span>
+    <span id="detail-note"></span>
+  </div>
+
+</div>
+    </section>
+
+  </main>
+
+  <footer class="page-width footer">
+    <span>NET/WORK · Компьютерные сети</span>
+    <a href="../index.html">Вернуться к темам ↑</a>
+  </footer>
+</body>
+</html>

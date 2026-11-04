@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7ADAD">
+
+  <title>Тема 07 — QoS и GRID-системы | CompNet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="topic7css.css">
+  <script src="topic7js.js" defer></script>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="../index.html" class="brand">
+      <span class="brand-icon">♥</span>
+      <span>CompNet</span>
+    </a>
+
+    <a href="../index.html" class="back-link">
+      ← На главную
+    </a>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        COMPUTER NETWORKS · TOPIC 07
+      </div>
+
+      <h1>
+        QoS и <span>GRID-системы.</span>
+      </h1>
+
+      <p class="hero-description">
+        Технологии обеспечения качества обслуживания в IP-сетях
+        и распределённые вычислительные системы.
+      </p>
+
+      <div class="hero-tags">
+        <span>QoS</span>
+        <span>IP Networks</span>
+        <span>GRID Computing</span>
+      </div>
+
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-circle"></div>
+
+      <div class="visual-card">
+        <div class="visual-top">
+          <span>NETWORK STATUS</span>
+          <span class="online-dot"></span>
+        </div>
+
+        <div class="visual-icon">⌘</div>
+
+        <div class="visual-lines">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div class="visual-bottom">
+          <strong>Connected</strong>
+          <span>Network quality</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- CONTENT NAVIGATION -->
+  <section class="topics-intro">
+
+    <div class="section-label">ИЗУЧАЕМ ТЕМУ</div>
+
+    <h2>Два важных направления</h2>
+
+    <p>
+      Выбери раздел, чтобы познакомиться с его основными понятиями
+      и принципами работы.
+    </p>
+
+    <div class="topic-selector">
+
+      <button class="selector-card active" data-section="qos">
+        <span class="selector-number">01</span>
+        <span class="selector-icon">◈</span>
+        <span class="selector-title">QoS в IP-сетях</span>
+        <span class="selector-description">
+          Качество обслуживания сети
+        </span>
+        <span class="selector-arrow">→</span>
+      </button>
+
+      <button class="selector-card" data-section="grid">
+        <span class="selector-number">02</span>
+        <span class="selector-icon">▦</span>
+        <span class="selector-title">GRID-системы</span>
+        <span class="selector-description">
+          Распределённые вычисления
+        </span>
+        <span class="selector-arrow">→</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- QOS SECTION -->
+  <main>
+
+    <section class="content-section active" id="qos">
+
+      <div class="section-heading">
+        <span class="section-label">ЧАСТЬ 01 · QUALITY OF SERVICE</span>
+        <h2>Стандарты QoS в IP-сетях</h2>
+        <p>
+          Как обеспечить стабильную передачу данных
+          и приоритет важного сетевого трафика?
+        </p>
+      </div>
+
+
+      <div class="info-card highlight-card">
+        <span class="card-label">ОСНОВНОЕ ПОНЯТИЕ</span>
+
+        <h3>Что такое QoS?</h3>
+
+        <p>
+          <strong>QoS (Quality of Service)</strong> — это набор технологий,
+          механизмов и методов, позволяющих управлять качеством передачи
+          данных в сети.
+        </p>
+
+        <p>
+          QoS помогает распределять сетевые ресурсы, устанавливать
+          приоритеты для разных видов трафика и обеспечивать более
+          стабильную работу важных приложений.
+        </p>
+
+        <div class="example-box">
+          <span>Пример из жизни</span>
+          <p>
+            Представь, что несколько пользователей одновременно
+            используют интернет: один смотрит видео, другой скачивает
+            большой файл, а третий разговаривает по видеосвязи.
+            QoS позволяет отдавать приоритет трафику видеозвонка,
+            чтобы уменьшить задержки и прерывания.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- METRICS -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">01</span>
+          <div>
+            <h3>Основные показатели QoS</h3>
+            <p>Параметры, по которым оценивается качество сети.</p>
+          </div>
+        </div>
+
+        <div class="metrics-grid">
+
+          <article class="metric-card">
+            <div class="metric-icon">↗</div>
+            <h4>Пропускная способность</h4>
+            <span class="metric-en">Bandwidth</span>
+            <p>
+              Объём данных, который сеть может передать
+              за определённое время.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-icon">◷</div>
+            <h4>Задержка</h4>
+            <span class="metric-en">Latency / Delay</span>
+            <p>
+              Время, необходимое для передачи пакета
+              от отправителя к получателю.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-icon">≈</div>
+            <h4>Джиттер</h4>
+            <span class="metric-en">Jitter</span>
+            <p>
+              Изменение времени задержки между
+              последовательными пакетами.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-icon">%</div>
+            <h4>Потеря пакетов</h4>
+            <span class="metric-en">Packet Loss</span>
+            <p>
+              Доля пакетов, которые не дошли
+              до получателя.
+            </p>
+          </article>
+
+        </div>
+      </div>
+
+
+      <!-- MODELS -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">02</span>
+          <div>
+            <h3>Основные модели QoS</h3>
+            <p>Два подхода к управлению качеством обслуживания.</p>
+          </div>
+        </div>
+
+        <div class="model-grid">
+
+          <article class="model-card">
+            <span class="model-tag">МОДЕЛЬ 01</span>
+            <h3>IntServ</h3>
+            <span class="model-full">
+              Integrated Services
+            </span>
+
+            <p>
+              Модель интегрированных услуг, при которой сеть
+              может резервировать ресурсы для отдельных потоков данных.
+            </p>
+
+            <ul>
+              <li>Резервирование ресурсов.</li>
+              <li>Контроль каждого потока.</li>
+              <li>Использование протокола RSVP.</li>
+              <li>Подходит для строгих требований к качеству.</li>
+            </ul>
+
+            <div class="model-note">
+              Главная особенность: ресурсы выделяются
+              для конкретного потока данных.
+            </div>
+          </article>
+
+          <article class="model-card">
+            <span class="model-tag">МОДЕЛЬ 02</span>
+            <h3>DiffServ</h3>
+            <span class="model-full">
+              Differentiated Services
+            </span>
+
+            <p>
+              Модель дифференцированного обслуживания,
+              при которой пакеты разделяются на классы
+              с разными уровнями приоритета.
+            </p>
+
+            <ul>
+              <li>Классификация трафика.</li>
+              <li>Использование поля DSCP.</li>
+              <li>Обработка пакетов по классам.</li>
+              <li>Хорошо масштабируется в крупных сетях.</li>
+            </ul>
+
+            <div class="model-note">
+              Главная особенность: пакеты одного класса
+              получают одинаковый принцип обработки.
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+
+      <!-- MECHANISMS -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">03</span>
+          <div>
+            <h3>Механизмы обеспечения QoS</h3>
+            <p>Как именно сеть управляет трафиком?</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+
+          <details class="accordion-item" open>
+            <summary>Классификация и маркировка трафика</summary>
+            <div class="accordion-content">
+              <p>
+                Сетевые пакеты анализируются и распределяются
+                по категориям. Затем им могут назначаться
+                специальные метки, указывающие приоритет обработки.
+              </p>
+              <p>
+                Например, голосовой трафик может иметь более высокий
+                приоритет, чем обычная загрузка файлов.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>Управление очередями (Queuing)</summary>
+            <div class="accordion-content">
+              <p>
+                Пакеты помещаются в очереди и передаются в соответствии
+                с установленными правилами. Некоторые очереди
+                обслуживаются раньше других.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>Формирование трафика (Traffic Shaping)</summary>
+            <div class="accordion-content">
+              <p>
+                Механизм сглаживания потока данных, который
+                регулирует скорость отправки пакетов и помогает
+                избегать резких скачков нагрузки.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>Ограничение трафика (Traffic Policing)</summary>
+            <div class="accordion-content">
+              <p>
+                Механизм контроля соблюдения установленной скорости
+                передачи. Пакеты, превышающие заданные ограничения,
+                могут отбрасываться или перемаркировываться.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>Предотвращение перегрузок</summary>
+            <div class="accordion-content">
+              <p>
+                Используются алгоритмы управления очередями,
+                которые помогают уменьшать перегрузку сети
+                и вероятность потери пакетов.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+
+      <!-- SUMMARY -->
+      <div class="summary-card">
+        <span class="card-label">ГЛАВНОЕ</span>
+        <h3>Зачем нужен QoS?</h3>
+        <p>
+          QoS позволяет эффективнее использовать сетевые ресурсы,
+          управлять приоритетами трафика и улучшать качество
+          передачи данных, особенно для чувствительных к задержкам
+          приложений: видеосвязи, IP-телефонии и потокового видео.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- GRID SECTION -->
+    <section class="content-section" id="grid">
+
+      <div class="section-heading">
+        <span class="section-label">ЧАСТЬ 02 · GRID COMPUTING</span>
+        <h2>Применение компьютерных GRID-систем</h2>
+        <p>
+          Как объединить множество компьютеров
+          для решения сложных вычислительных задач?
+        </p>
+      </div>
+
+
+      <div class="info-card highlight-card">
+        <span class="card-label">ОСНОВНОЕ ПОНЯТИЕ</span>
+
+        <h3>Что такое GRID-система?</h3>
+
+        <p>
+          <strong>GRID Computing (грид-вычисления)</strong> —
+          это технология распределённых вычислений, которая
+          объединяет вычислительные ресурсы нескольких
+          компьютеров в единую систему.
+        </p>
+
+        <p>
+          Благодаря такому объединению можно совместно
+          использовать процессоры, память, хранилища данных
+          и другие ресурсы для выполнения сложных задач.
+        </p>
+
+        <div class="example-box">
+          <span>Пример из жизни</span>
+          <p>
+            Учёным необходимо обработать огромный объём данных.
+            Вместо одного мощного компьютера они могут распределить
+            вычисления между сотнями компьютеров, которые будут
+            работать над разными частями задачи одновременно.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- ARCHITECTURE -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">01</span>
+          <div>
+            <h3>Архитектура GRID-систем</h3>
+            <p>Из каких элементов состоит распределённая система?</p>
+          </div>
+        </div>
+
+        <div class="grid-architecture">
+
+          <div class="architecture-node main-node">
+            <span>◎</span>
+            <strong>GRID Middleware</strong>
+            <small>Промежуточное программное обеспечение</small>
+          </div>
+
+          <div class="architecture-connector">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="resource-nodes">
+
+            <div class="resource-node">
+              <span>▣</span>
+              <strong>Компьютеры</strong>
+              <small>Вычислительные ресурсы</small>
+            </div>
+
+            <div class="resource-node">
+              <span>▤</span>
+              <strong>Хранилища</strong>
+              <small>Ресурсы для данных</small>
+            </div>
+
+            <div class="resource-node">
+              <span>⚙</span>
+              <strong>Серверы</strong>
+              <small>Обработка задач</small>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="architecture-description">
+          Middleware координирует взаимодействие ресурсов,
+          распределяет задачи и помогает управлять доступом
+          к вычислительным возможностям системы.
+        </p>
+
+      </div>
+
+
+      <!-- PRINCIPLES -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">02</span>
+          <div>
+            <h3>Принцип работы GRID-систем</h3>
+            <p>Как выполняется распределённая задача?</p>
+          </div>
+        </div>
+
+        <div class="steps-list">
+
+          <div class="step">
+            <span class="step-number">01</span>
+            <div>
+              <h4>Постановка задачи</h4>
+              <p>
+                Пользователь отправляет задачу в GRID-систему.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">02</span>
+            <div>
+              <h4>Поиск ресурсов</h4>
+              <p>
+                Система определяет доступные компьютеры,
+                серверы и другие ресурсы.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">03</span>
+            <div>
+              <h4>Распределение вычислений</h4>
+              <p>
+                Большая задача разделяется на отдельные части,
+                которые передаются разным узлам.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">04</span>
+            <div>
+              <h4>Параллельное выполнение</h4>
+              <p>
+                Несколько компьютеров одновременно
+                выполняют назначенные им вычисления.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">05</span>
+            <div>
+              <h4>Сбор результатов</h4>
+              <p>
+                Полученные результаты объединяются
+                в единый итоговый ответ.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- APPLICATIONS -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">03</span>
+          <div>
+            <h3>Области применения GRID</h3>
+            <p>Где используются грид-вычисления?</p>
+          </div>
+        </div>
+
+        <div class="applications-grid">
+
+          <article class="application-card">
+            <span>🔬</span>
+            <h4>Научные исследования</h4>
+            <p>
+              Обработка экспериментальных данных,
+              моделирование физических процессов.
+            </p>
+          </article>
+
+          <article class="application-card">
+            <span>🧬</span>
+            <h4>Биология и медицина</h4>
+            <p>
+              Анализ геномов, исследование белков
+              и медицинских данных.
+            </p>
+          </article>
+
+          <article class="application-card">
+            <span>🌦️</span>
+            <h4>Метеорология</h4>
+            <p>
+              Создание сложных моделей погоды
+              и климатических изменений.
+            </p>
+          </article>
+
+          <article class="application-card">
+            <span>🚀</span>
+            <h4>Космические исследования</h4>
+            <p>
+              Обработка астрономических наблюдений
+              и больших объёмов космических данных.
+            </p>
+          </article>
+
+        </div>
+      </div>
+
+
+      <!-- ADVANTAGES -->
+      <div class="content-block">
+
+        <div class="block-heading">
+          <span class="block-number">04</span>
+          <div>
+            <h3>Преимущества и недостатки GRID</h3>
+            <p>Основные особенности технологии.</p>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+
+          <div class="pros-card">
+            <h3>Преимущества</h3>
+            <ul>
+              <li>Объединение ресурсов разных компьютеров.</li>
+              <li>Возможность решать сложные задачи.</li>
+              <li>Параллельное выполнение вычислений.</li>
+              <li>Совместное использование данных.</li>
+              <li>Масштабируемость системы.</li>
+            </ul>
+          </div>
+
+          <div class="cons-card">
+            <h3>Недостатки</h3>
+            <ul>
+              <li>Зависимость от сетевого соединения.</li>
+              <li>Сложность управления ресурсами.</li>
+              <li>Проблемы безопасности.</li>
+              <li>Задержки при передаче данных.</li>
+              <li>Сложность синхронизации задач.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- SUMMARY -->
+      <div class="summary-card">
+        <span class="card-label">ГЛАВНОЕ</span>
+        <h3>Зачем нужны GRID-системы?</h3>
+        <p>
+          GRID-системы позволяют объединять ресурсы множества
+          компьютеров для совместного решения сложных задач.
+          Они особенно полезны в науке, медицине, метеорологии
+          и других областях, где требуются большие вычислительные
+          мощности.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="../index.html">← Вернуться к списку тем</a>
+    <p>CompNet ♥ · Computer Networks · Topic 07</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

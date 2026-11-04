@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Тема 06 — BGP, HelpDesk, ICMP и оптоволоконные сети</title>
+
+  <link rel="icon" type="image/png" href="../img/icon.png">
+  <link rel="stylesheet" href="topic6css.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="topic6js.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="brand">CompNet<span>♥</span></a>
+
+    <a href="../index.html" class="back-button">
+      <span>←</span> На главную
+    </a>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">КОМПЬЮТЕРНЫЕ СЕТИ · ТЕМА 06</span>
+
+        <h1>
+          Сетевые протоколы
+          <span>и оптоволокно</span>
+        </h1>
+
+        <p class="hero-description">
+          Изучаем маршрутизацию BGP, работу службы HelpDesk,
+          диагностику сетей с помощью ICMP и современные
+          технологии оптоволоконного подключения.
+        </p>
+
+        <a href="#topics" class="primary-button">
+          Изучить тему <span>↓</span>
+        </a>
+
+        <div class="hero-tags">
+          <span>BGP</span>
+          <span>HelpDesk</span>
+          <span>ICMP</span>
+          <span>FTTH / FTTB / FTTC</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+
+        <div class="network-center">NET</div>
+
+        <div class="network-node node-one">BGP</div>
+        <div class="network-node node-two">ICMP</div>
+        <div class="network-node node-three">LAN</div>
+        <div class="network-node node-four">FIBER</div>
+
+        <div class="connection connection-one"></div>
+        <div class="connection connection-two"></div>
+        <div class="connection connection-three"></div>
+        <div class="connection connection-four"></div>
+      </div>
+
+      <span class="hero-number">06</span>
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="section intro-section">
+      <div class="section-heading">
+        <span class="eyebrow">ОБЩЕЕ ПРЕДСТАВЛЕНИЕ</span>
+        <h2>Как работает современная сеть?</h2>
+        <p>
+          Для стабильной передачи данных недостаточно только соединить
+          устройства кабелями. Необходимо правильно выбирать маршруты,
+          контролировать состояние сети, устранять неисправности
+          и использовать подходящую инфраструктуру.
+        </p>
+      </div>
+
+      <div class="intro-grid">
+        <article class="intro-card">
+          <div class="icon-box pink">↗</div>
+          <h3>Маршрутизация</h3>
+          <p>
+            Определяет, по каким путям данные будут передаваться
+            между сетями.
+          </p>
+        </article>
+
+        <article class="intro-card">
+          <div class="icon-box aqua">⌘</div>
+          <h3>Диагностика</h3>
+          <p>
+            Помогает обнаруживать сетевые ошибки и контролировать
+            доступность устройств.
+          </p>
+        </article>
+
+        <article class="intro-card">
+          <div class="icon-box lilac">◎</div>
+          <h3>Инфраструктура</h3>
+          <p>
+            Обеспечивает быстрое и надёжное подключение пользователей
+            к сетевым сервисам.
+          </p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- TOPIC NAVIGATION -->
+    <section class="section topics-section" id="topics">
+      <div class="section-heading">
+        <span class="eyebrow">СОДЕРЖАНИЕ</span>
+        <h2>Четыре ключевых раздела</h2>
+        <p>Выбери карточку, чтобы перейти к нужному разделу.</p>
+      </div>
+
+      <div class="topic-grid">
+        <a class="topic-card" href="#bgp">
+          <div class="topic-card-top">
+            <span class="topic-number">01</span>
+            <span class="topic-symbol pink">↗</span>
+          </div>
+          <h3>Протокол BGP</h3>
+          <p>Обмен маршрутами между автономными системами.</p>
+          <span class="card-link">Изучить раздел <span>→</span></span>
+        </a>
+
+        <a class="topic-card" href="#helpdesk">
+          <div class="topic-card-top">
+            <span class="topic-number">02</span>
+            <span class="topic-symbol aqua">⌘</span>
+          </div>
+          <h3>Служба HelpDesk</h3>
+          <p>Организация поддержки и обслуживание ЛВС.</p>
+          <span class="card-link">Изучить раздел <span>→</span></span>
+        </a>
+
+        <a class="topic-card" href="#icmp">
+          <div class="topic-card-top">
+            <span class="topic-number">03</span>
+            <span class="topic-symbol lilac">⌁</span>
+          </div>
+          <h3>Протокол ICMP</h3>
+          <p>Диагностика сетевых соединений и сообщения об ошибках.</p>
+          <span class="card-link">Изучить раздел <span>→</span></span>
+        </a>
+
+        <a class="topic-card" href="#fiber">
+          <div class="topic-card-top">
+            <span class="topic-number">04</span>
+            <span class="topic-symbol peach">〰</span>
+          </div>
+          <h3>FTTH, FTTB и FTTC</h3>
+          <p>Архитектуры оптоволоконного доступа и их различия.</p>
+          <span class="card-link">Изучить раздел <span>→</span></span>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- BGP -->
+    <section class="content-section section" id="bgp">
+      <div class="section-title-row">
+        <div>
+          <span class="eyebrow">РАЗДЕЛ 01 · МАРШРУТИЗАЦИЯ</span>
+          <h2>Протокол BGP</h2>
+        </div>
+        <span class="section-number">01</span>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-icon">↗</div>
+
+        <div>
+          <h3>Что такое BGP?</h3>
+          <p>
+            <strong>BGP (Border Gateway Protocol)</strong> — протокол
+            динамической маршрутизации, который используется для обмена
+            информацией о маршрутах между автономными системами в Интернете.
+          </p>
+          <p>
+            Автономная система (AS) — это совокупность IP-сетей и
+            маршрутизаторов, управляемых одной организацией и использующих
+            общую политику внешней маршрутизации.
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Как работает BGP?</h3>
+        <p>Маршрутизаторы обмениваются информацией о доступных сетях.</p>
+      </div>
+
+      <div class="bgp-diagram diagram-card">
+        <div class="as-box">
+          <span class="as-label">AS 65001</span>
+          <div class="router">Маршрутизатор A</div>
+          <span class="network-label">Сеть 192.0.2.0/24</span>
+        </div>
+
+        <div class="bgp-link">
+          <span>Сеанс BGP</span>
+          <div class="link-line"><span>→</span></div>
+          <small>Обмен маршрутами</small>
+        </div>
+
+        <div class="as-box aqua-as">
+          <span class="as-label">AS 65002</span>
+          <div class="router">Маршрутизатор B</div>
+          <span class="network-label">Сеть 198.51.100.0/24</span>
+        </div>
+      </div>
+
+      <p class="diagram-caption">
+        Упрощённая схема обмена маршрутной информацией между двумя
+        автономными системами.
+      </p>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="mini-number">01</span>
+          <h3>Соседство</h3>
+          <p>
+            BGP-маршрутизаторы устанавливают соединение и обмениваются
+            сообщениями для формирования BGP-сеанса.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span class="mini-number">02</span>
+          <h3>Обмен маршрутами</h3>
+          <p>
+            Маршрутизаторы передают сведения о доступных IP-префиксах
+            и атрибутах маршрутов.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span class="mini-number">03</span>
+          <h3>Выбор пути</h3>
+          <p>
+            BGP выбирает предпочтительный маршрут с учётом атрибутов
+            и настроенной политики маршрутизации.
+          </p>
+        </article>
+      </div>
+
+      <div class="comparison-card">
+        <div class="comparison-heading">
+          <span class="comparison-icon">✦</span>
+          <h3>Важные особенности BGP</h3>
+        </div>
+
+        <ul class="feature-list">
+          <li>
+            <span class="check-mark">✓</span>
+            Используется для внешней маршрутизации между автономными системами.
+          </li>
+          <li>
+            <span class="check-mark">✓</span>
+            Поддерживает обмен маршрутами между сетями разных организаций.
+          </li>
+          <li>
+            <span class="check-mark">✓</span>
+            Позволяет применять политики выбора маршрутов.
+          </li>
+          <li>
+            <span class="check-mark">✓</span>
+            Работает поверх TCP и использует порт 179.
+          </li>
+        </ul>
+      </div>
+
+      <div class="note-card">
+        <span class="note-icon">✦</span>
+        <p>
+          <strong>Главная идея:</strong> BGP помогает крупным сетям
+          обмениваться информацией о маршрутах и выбирать пути передачи
+          данных между автономными системами.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- HELPDESK -->
+    <section class="content-section section" id="helpdesk">
+      <div class="section-title-row">
+        <div>
+          <span class="eyebrow">РАЗДЕЛ 02 · УПРАВЛЕНИЕ И ПОДДЕРЖКА</span>
+          <h2>HelpDesk и эффективность ЛВС</h2>
+        </div>
+        <span class="section-number">02</span>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-icon aqua-icon">⌘</div>
+
+        <div>
+          <h3>Что такое HelpDesk?</h3>
+          <p>
+            <strong>HelpDesk</strong> — это служба технической поддержки,
+            которая принимает обращения пользователей, регистрирует
+            проблемы, помогает их решать и контролирует ход выполнения заявок.
+          </p>
+          <p>
+            В локальной вычислительной сети HelpDesk помогает поддерживать
+            работоспособность компьютеров, сетевого оборудования,
+            программ и доступа к общим ресурсам.
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Как обрабатывается обращение?</h3>
+        <p>Структурированный процесс позволяет быстрее находить и устранять неисправности.</p>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card">
+          <div class="process-icon">01</div>
+          <h3>Обращение</h3>
+          <p>
+            Пользователь сообщает о проблеме: например, не работает
+            Интернет или принтер.
+          </p>
+        </article>
+
+        <div class="process-arrow">→</div>
+
+        <article class="process-card">
+          <div class="process-icon aqua">02</div>
+          <h3>Регистрация</h3>
+          <p>
+            Специалист создаёт заявку, фиксирует описание и определяет
+            приоритет проблемы.
+          </p>
+        </article>
+
+        <div class="process-arrow">→</div>
+
+        <article class="process-card">
+          <div class="process-icon lilac">03</div>
+          <h3>Решение</h3>
+          <p>
+            Выполняется диагностика, устраняется неисправность и
+            проверяется результат.
+          </p>
+        </article>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Почему HelpDesk повышает эффективность работы ЛВС?</h3>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="mini-number">01</span>
+          <h3>Меньше простоев</h3>
+          <p>
+            Своевременная регистрация и обработка неисправностей
+            помогает сократить время отсутствия доступа к сетевым ресурсам.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span class="mini-number">02</span>
+          <h3>Контроль заявок</h3>
+          <p>
+            Специалисты видят статус обращений, историю решений и
+            задачи, которые ещё требуют внимания.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <span class="mini-number">03</span>
+          <h3>Анализ проблем</h3>
+          <p>
+            Повторяющиеся обращения помогают выявлять системные
+            неисправности и планировать профилактические работы.
+          </p>
+        </article>
+      </div>
+
+      <div class="example-card">
+        <div class="example-label">ПРИМЕР ИЗ ПРАКТИКИ</div>
+        <h3>В офисе перестал работать Интернет</h3>
+        <p>
+          Сотрудник создаёт заявку. HelpDesk фиксирует проблему,
+          проверяет, затронут ли один компьютер или вся сеть, и
+          направляет задачу ответственному специалисту. После восстановления
+          соединения специалист проверяет доступ и закрывает заявку.
+        </p>
+      </div>
+
+      <div class="note-card">
+        <span class="note-icon">✦</span>
+        <p>
+          <strong>Главная идея:</strong> HelpDesk не заменяет сетевые
+          устройства и протоколы, а организует работу технической
+          поддержки, помогая быстрее решать проблемы и повышать
+          надёжность ИТ-инфраструктуры.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ICMP -->
+    <section class="content-section section" id="icmp">
+      <div class="section-title-row">
+        <div>
+          <span class="eyebrow">РАЗДЕЛ 03 · ДИАГНОСТИКА</span>
+          <h2>Протокол ICMP</h2>
+        </div>
+        <span class="section-number">03</span>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-icon lilac-icon">⌁</div>
+
+        <div>
+          <h3>Что такое ICMP?</h3>
+          <p>
+            <strong>ICMP (Internet Control Message Protocol)</strong> —
+            протокол управляющих сообщений, используемый сетевыми
+            устройствами для передачи диагностической информации и
+            сообщений об ошибках при работе IP-сетей.
+          </p>
+          <p>
+            ICMP не предназначен для передачи пользовательских файлов
+            или сообщений приложений. Он помогает устройствам сообщать
+            о проблемах с доставкой IP-пакетов и проверять доступность узлов.
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Как работает проверка соединения?</h3>
+        <p>Команда ping использует ICMP Echo Request и Echo Reply.</p>
+      </div>
+
+      <div class="icmp-diagram diagram-card">
+        <div class="device-box">
+          <div class="device-icon">⌘</div>
+          <strong>Компьютер A</strong>
+          <span>Источник</span>
+        </div>
+
+        <div class="icmp-path">
+          <div class="packet packet-request">
+            <span>Echo Request</span>
+            <b>→</b>
+          </div>
+          <div class="packet packet-reply">
+            <b>←</b>
+            <span>Echo Reply</span>
+          </div>
+        </div>
+
+        <div class="device-box aqua-device">
+          <div class="device-icon">▣</div>
+          <strong>Компьютер B</strong>
+          <span>Получатель</span>
+        </div>
+      </div>
+
+      <p class="diagram-caption">
+        При доступности узла он может ответить на ICMP Echo Request
+        сообщением Echo Reply, если это не запрещено настройками сети.
+      </p>
+
+      <div class="subsection-heading">
+        <h3>Основные сообщения ICMP</h3>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="icmp-table">
+          <thead>
+            <tr>
+              <th>Сообщение</th>
+              <th>Назначение</th>
+              <th>Пример использования</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><span class="table-badge pink-badge">Echo Request</span></td>
+              <td>Запрос проверки доступности узла.</td>
+              <td>Отправляется командой ping.</td>
+            </tr>
+
+            <tr>
+              <td><span class="table-badge aqua-badge">Echo Reply</span></td>
+              <td>Ответ на запрос проверки доступности.</td>
+              <td>Может свидетельствовать о доступности узла.</td>
+            </tr>
+
+            <tr>
+              <td><span class="table-badge lilac-badge">Destination Unreachable</span></td>
+              <td>Сообщение о невозможности доставки.</td>
+              <td>Нет подходящего маршрута или доставка запрещена.</td>
+            </tr>
+
+            <tr>
+              <td><span class="table-badge peach-badge">Time Exceeded</span></td>
+              <td>Сообщение об истечении времени жизни пакета.</td>
+              <td>Используется, в частности, при работе traceroute.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Полезные инструменты</h3>
+      </div>
+
+      <div class="command-grid">
+        <article class="command-card">
+          <div class="command-header">
+            <span class="command-icon">↗</span>
+            <h3>ping</h3>
+          </div>
+          <p>Проверяет ответ узла и показывает время отклика.</p>
+          <code>ping 8.8.8.8</code>
+        </article>
+
+        <article class="command-card">
+          <div class="command-header">
+            <span class="command-icon aqua">⌁</span>
+            <h3>tracert / traceroute</h3>
+          </div>
+          <p>Помогает исследовать промежуточные узлы маршрута.</p>
+          <code>tracert example.com</code>
+        </article>
+      </div>
+
+      <div class="warning-card">
+        <span class="warning-icon">!</span>
+        <p>
+          <strong>Важно:</strong> отсутствие ответа на ping не всегда
+          означает, что устройство выключено. ICMP может блокироваться
+          межсетевым экраном или настройками сети.
+        </p>
+      </div>
+
+      <div class="note-card">
+        <span class="note-icon">✦</span>
+        <p>
+          <strong>Главная идея:</strong> ICMP помогает обнаруживать
+          некоторые сетевые ошибки и диагностировать доступность узлов,
+          но сам по себе не гарантирует, что все сетевые приложения работают.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- FIBER -->
+    <section class="content-section section" id="fiber">
+      <div class="section-title-row">
+        <div>
+          <span class="eyebrow">РАЗДЕЛ 04 · ОПТИЧЕСКИЕ СЕТИ</span>
+          <h2>FTTH, FTTB и FTTC</h2>
+        </div>
+        <span class="section-number">04</span>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-icon peach-icon">〰</div>
+
+        <div>
+          <h3>Что такое оптоволоконные сети?</h3>
+          <p>
+            Оптоволоконные сети передают данные с помощью световых
+            сигналов по оптическому волокну. Они обеспечивают высокую
+            пропускную способность и позволяют передавать информацию
+            на значительные расстояния с низким затуханием сигнала.
+          </p>
+          <p>
+            FTTH, FTTB и FTTC — архитектуры доступа, различающиеся тем,
+            до какой точки оптическое волокно доходит непосредственно.
+            Чем ближе оптическое подключение к пользователю, тем меньший
+            участок линии обычно приходится выполнять по другой среде.
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Три архитектуры подключения</h3>
+        <p>Главное различие — конечная точка оптического волокна.</p>
+      </div>
+
+      <div class="fiber-grid">
+        <article class="fiber-card">
+          <div class="fiber-card-top">
+            <span class="fiber-acronym">FTTH</span>
+            <span class="fiber-index">01</span>
+          </div>
+
+          <div class="fiber-illustration ftth-illustration">
+            <div class="fiber-source">Узел провайдера</div>
+            <div class="fiber-line"></div>
+            <div class="fiber-destination">Дом / квартира</div>
+          </div>
+
+          <h3>Fiber To The Home</h3>
+          <p class="fiber-subtitle">Оптика до дома или квартиры</p>
+          <p>
+            Оптоволокно доводится непосредственно до жилого помещения
+            пользователя.
+          </p>
+
+          <div class="fiber-detail">
+            <strong>Особенность</strong>
+            <span>Оптическая линия до конечного пользователя.</span>
+          </div>
+
+          <div class="fiber-detail">
+            <strong>Преимущество</strong>
+            <span>Высокая пропускная способность и возможность дальнейшего увеличения скорости.</span>
+          </div>
+        </article>
+
+        <article class="fiber-card">
+          <div class="fiber-card-top">
+            <span class="fiber-acronym aqua-text">FTTB</span>
+            <span class="fiber-index">02</span>
+          </div>
+
+          <div class="fiber-illustration fttb-illustration">
+            <div class="fiber-source">Узел провайдера</div>
+            <div class="fiber-line"></div>
+            <div class="fiber-destination">Здание</div>
+            <div class="building-users">
+              <span>Кв. 1</span>
+              <span>Кв. 2</span>
+              <span>Кв. 3</span>
+            </div>
+          </div>
+
+          <h3>Fiber To The Building</h3>
+          <p class="fiber-subtitle">Оптика до здания</p>
+          <p>
+            Оптическое волокно доходит до здания, а дальнейшее подключение
+            квартир выполняется по внутренней сети.
+          </p>
+
+          <div class="fiber-detail">
+            <strong>Особенность</strong>
+            <span>Оборудование доступа размещается в здании или рядом с ним.</span>
+          </div>
+
+          <div class="fiber-detail">
+            <strong>Преимущество</strong>
+            <span>Удобно для многоквартирных домов и офисных зданий.</span>
+          </div>
+        </article>
+
+        <article class="fiber-card">
+          <div class="fiber-card-top">
+            <span class="fiber-acronym lilac-text">FTTC</span>
+            <span class="fiber-index">03</span>
+          </div>
+
+          <div class="fiber-illustration fttc-illustration">
+            <div class="fiber-source">Узел провайдера</div>
+            <div class="fiber-line"></div>
+            <div class="fiber-destination">Шкаф у улицы</div>
+            <div class="copper-line"></div>
+            <div class="small-home">Дом</div>
+          </div>
+
+          <h3>Fiber To The Curb / Cabinet</h3>
+          <p class="fiber-subtitle">Оптика до уличного шкафа или ближайшей точки</p>
+          <p>
+            Волокно доводится до распределительного шкафа или точки рядом
+            с пользователем, а последний участок проходит по другой среде,
+            например по медной линии.
+          </p>
+
+          <div class="fiber-detail">
+            <strong>Особенность</strong>
+            <span>Часть линии от точки доступа до помещения не является оптической.</span>
+          </div>
+
+          <div class="fiber-detail">
+            <strong>Преимущество</strong>
+            <span>Можно использовать существующую инфраструктуру на последнем участке.</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Сравнение технологий</h3>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="fiber-table">
+          <thead>
+            <tr>
+              <th>Критерий</th>
+              <th>FTTH</th>
+              <th>FTTB</th>
+              <th>FTTC</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Куда доходит оптика?</td>
+              <td>До дома или квартиры</td>
+              <td>До здания</td>
+              <td>До шкафа или точки рядом с пользователем</td>
+            </tr>
+
+            <tr>
+              <td>Последний участок</td>
+              <td>Оптоволокно</td>
+              <td>Внутренняя сеть здания</td>
+              <td>Часто медная линия</td>
+            </tr>
+
+            <tr>
+              <td>Типичное применение</td>
+              <td>Квартиры и частные дома</td>
+              <td>Многоквартирные дома и офисы</td>
+              <td>Районы с существующей медной инфраструктурой</td>
+            </tr>
+
+            <tr>
+              <td>Главная особенность</td>
+              <td>Оптика ближе всего к пользователю</td>
+              <td>Общая точка доступа на здание</td>
+              <td>Оптика заканчивается до помещения</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection-heading">
+        <h3>Что означает «мультисервисная сеть»?</h3>
+      </div>
+
+      <div class="multiservice-card">
+        <div class="multiservice-intro">
+          <div class="definition-icon aqua-icon">◈</div>
+          <div>
+            <h3>Одна инфраструктура — несколько сервисов</h3>
+            <p>
+              Мультисервисная сеть позволяет использовать общую
+              инфраструктуру для предоставления разных услуг.
+              Конкретный набор сервисов зависит от оборудования
+              и конфигурации сети.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-pills">
+          <span>Интернет</span>
+          <span>IP-телефония</span>
+          <span>IPTV</span>
+          <span>Видеосвязь</span>
+          <span>Облачные сервисы</span>
+        </div>
+      </div>
+
+      <div class="note-card">
+        <span class="note-icon">✦</span>
+        <p>
+          <strong>Главная идея:</strong> FTTH, FTTB и FTTC различаются
+          расположением конечной точки оптоволоконной линии. При сравнении
+          важно учитывать не только тип подключения, но и оборудование,
+          технологию на последнем участке и условия эксплуатации.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="section summary-section">
+      <span class="eyebrow">ПОДВЕДЁМ ИТОГИ</span>
+      <h2>Что нужно запомнить?</h2>
+
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-number">01</span>
+          <p><strong>BGP</strong> — обмен маршрутами между автономными системами.</p>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">02</span>
+          <p><strong>HelpDesk</strong> — организация обращений и технической поддержки пользователей.</p>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">03</span>
+          <p><strong>ICMP</strong> — управляющие сообщения, диагностика и сообщения об ошибках IP-сетей.</p>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">04</span>
+          <p><strong>FTTH, FTTB, FTTC</strong> — варианты доступа, отличающиеся конечной точкой оптоволокна.</p>
+        </div>
+      </div>
+
+      <a href="#topics" class="back-to-top">Вернуться к содержанию ↑</a>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <a href="../index.html" class="brand">CompNet<span>♥</span></a>
+    <p>Самостоятельная работа · Компьютерные сети</p>
+    <span>Тема 06</span>
+  </footer>
+
+</body>
+</html>

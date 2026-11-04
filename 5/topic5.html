@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Тема 05 — RIP и OSPF | CompNet</title>
+
+  <link rel="icon" type="image/png" href="../img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="topic5css.css">
+  <script src="topic5js.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="brand" href="../index.html">CompNet<span>♥</span></a>
+
+    <a class="back-button" href="../index.html">
+      <span>←</span>
+      <span>Все темы</span>
+    </a>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-content">
+        <div class="hero-label">
+          <span class="label-dot"></span>
+          КОМПЬЮТЕРНЫЕ СЕТИ · ТЕМА 05
+        </div>
+
+        <h1>
+          RIP и<br>
+          <span>OSPF</span>
+        </h1>
+
+        <p class="hero-description">
+          Как маршрутизаторы находят путь к получателю?
+          Изучаем два важных протокола маршрутизации,
+          их принципы работы и различия.
+        </p>
+
+        <div class="hero-tags">
+          <span>RIP</span>
+          <span>OSPF</span>
+          <span>Routing</span>
+        </div>
+
+        <a href="#introduction" class="hero-button">
+          Начать изучение
+          <span>↓</span>
+        </a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="network-orbit orbit-one"></div>
+        <div class="network-orbit orbit-two"></div>
+
+        <div class="network-line line-one"></div>
+        <div class="network-line line-two"></div>
+        <div class="network-line line-three"></div>
+        <div class="network-line line-four"></div>
+        <div class="network-line line-five"></div>
+
+        <div class="network-node node-center">
+          <span>R</span>
+          <small>ROUTER</small>
+        </div>
+
+        <div class="network-node node-top">
+          <span>01</span>
+        </div>
+
+        <div class="network-node node-left">
+          <span>02</span>
+        </div>
+
+        <div class="network-node node-right">
+          <span>03</span>
+        </div>
+
+        <div class="network-node node-bottom">
+          <span>04</span>
+        </div>
+
+        <div class="floating-label label-rip">RIP</div>
+        <div class="floating-label label-ospf">OSPF</div>
+
+        <div class="visual-caption">
+          <span class="caption-dot"></span>
+          NETWORK ROUTING
+        </div>
+      </div>
+
+      <div class="hero-number">05</div>
+    </section>
+
+
+    <!-- INTRODUCTION -->
+    <section class="content-section" id="introduction">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">01 / ОСНОВЫ</p>
+          <h2>Что такое маршрутизация?</h2>
+          <p class="section-description">
+            Прежде чем изучать RIP и OSPF, разберёмся,
+            как данные находят дорогу в сети.
+          </p>
+        </div>
+
+        <span class="section-number">01</span>
+      </div>
+
+      <div class="intro-card">
+        <div class="intro-icon">⌘</div>
+
+        <div class="intro-content">
+          <h3>Маршрутизация — выбор пути передачи данных</h3>
+
+          <p>
+            Маршрутизация — это процесс определения пути, по которому
+            пакеты данных должны пройти от источника к получателю
+            через одну или несколько сетей.
+          </p>
+
+          <p>
+            Маршрутизаторы анализируют адрес назначения и используют
+            таблицы маршрутизации, чтобы определить, куда пересылать
+            пакет дальше. Эти таблицы могут заполняться вручную
+            или обновляться с помощью протоколов динамической
+            маршрутизации.
+          </p>
+        </div>
+      </div>
+
+      <div class="concept-grid">
+
+        <article class="concept-card concept-pink" data-concept="route" tabindex="0" role="button" aria-expanded="false">
+          <div class="concept-top">
+            <span class="concept-icon">↗</span>
+            <span class="concept-index">01</span>
+          </div>
+
+          <h3>Маршрут</h3>
+
+          <p>
+            Путь, по которому данные проходят через сеть
+            к конечному получателю.
+          </p>
+        </article>
+
+        <article class="concept-card concept-aqua" data-concept="route" tabindex="0" role="button" aria-expanded="false">
+          <div class="concept-top">
+            <span class="concept-icon">▤</span>
+            <span class="concept-index">02</span>
+          </div>
+
+          <h3>Таблица маршрутизации</h3>
+
+          <p>
+            Содержит сведения о доступных сетях и о том,
+            через какой следующий узел к ним можно попасть.
+          </p>
+        </article>
+
+        <article class="concept-card concept-lilac" data-concept="route" tabindex="0" role="button" aria-expanded="false">
+          <div class="concept-top">
+            <span class="concept-icon">⌘</span>
+            <span class="concept-index">03</span>
+          </div>
+
+          <h3>Протокол маршрутизации</h3>
+
+          <p>
+            Позволяет маршрутизаторам обмениваться информацией
+            о маршрутах и выбирать подходящие пути.
+          </p>
+        </article>
+
+      </div>
+      
+      <div class="info-banner">
+        <span class="info-banner-icon">✦</span>
+
+        <p>
+          <strong>Главная идея:</strong>
+          RIP и OSPF помогают маршрутизаторам узнавать о доступных
+          сетях и выбирать пути передачи данных, но используют
+          разные алгоритмы и метрики.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- RIP -->
+    <section class="content-section section-tinted" id="rip">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">02 / DISTANCE VECTOR</p>
+          <h2>Протокол RIP</h2>
+          <p class="section-description">
+            Простой протокол динамической маршрутизации,
+            основанный на количестве переходов между маршрутизаторами.
+          </p>
+        </div>
+
+        <span class="section-number">02</span>
+      </div>
+
+      <div class="protocol-layout">
+
+        <div class="protocol-main">
+          <div class="protocol-badge badge-pink">RIP · IPv4 / IPv6</div>
+
+          <h3>Routing Information Protocol</h3>
+
+          <p>
+            RIP — протокол маршрутизации вектором расстояния.
+            Каждый маршрутизатор периодически передаёт соседним
+            маршрутизаторам информацию о доступных ему сетях
+            и расстоянии до них.
+          </p>
+
+          <p>
+            Для определения расстояния RIP использует метрику
+            <strong>hop count</strong> — количество маршрутизаторов,
+            через которые необходимо пройти до сети назначения.
+          </p>
+
+          <p>
+            При выборе маршрута RIP обычно предпочитает путь
+            с наименьшим количеством переходов. Протокол не оценивает
+            напрямую пропускную способность канала или его задержку.
+          </p>
+
+          <div class="protocol-note">
+            <span>✦</span>
+            <div>
+              <strong>Запомни</strong>
+              <p>RIP выбирает маршрут по количеству переходов.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>ГЛАВНАЯ МЕТРИКА</span>
+            <span class="metric-icon">↗</span>
+          </div>
+
+          <div class="metric-value">15</div>
+
+          <h3>переходов максимум</h3>
+
+          <p>
+            В RIP маршруты с метрикой 1–15 считаются достижимыми.
+            Значение 16 означает недостижимую сеть.
+          </p>
+
+          <div class="metric-scale">
+            <span class="scale-active"></span>
+            <span class="scale-active"></span>
+            <span class="scale-active"></span>
+            <span class="scale-active"></span>
+            <span class="scale-active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="metric-footer">
+            <span>Небольшие сети</span>
+            <span>Ограниченная масштабируемость</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="subsection-heading">
+        <span class="subsection-icon">↗</span>
+
+        <div>
+          <h3>Как работает RIP?</h3>
+          <p>Представим, что пакет должен попасть в удалённую сеть.</p>
+        </div>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-topline">
+          <span>СХЕМА 01</span>
+          <span class="diagram-status">
+            <i></i> DISTANCE VECTOR
+          </span>
+        </div>
+
+        <div class="rip-diagram">
+
+          <div class="diagram-endpoint">
+            <div class="endpoint-icon">PC</div>
+            <strong>Источник</strong>
+            <span>Начальная сеть</span>
+          </div>
+
+          <div class="route-part">
+            <div class="route-line">
+              <span class="route-dot"></span>
+            </div>
+            <span class="route-caption">1 переход</span>
+          </div>
+
+          <div class="router-box router-pink">
+            <span class="router-symbol">R1</span>
+            <strong>Router 1</strong>
+            <small>Первый узел</small>
+          </div>
+
+          <div class="route-part">
+            <div class="route-line">
+              <span class="route-dot"></span>
+            </div>
+            <span class="route-caption">2 переход</span>
+          </div>
+
+          <div class="router-box router-pink">
+            <span class="router-symbol">R2</span>
+            <strong>Router 2</strong>
+            <small>Следующий узел</small>
+          </div>
+
+          <div class="route-part">
+            <div class="route-line">
+              <span class="route-dot"></span>
+            </div>
+            <span class="route-caption">3 переход</span>
+          </div>
+
+          <div class="diagram-endpoint">
+            <div class="endpoint-icon endpoint-destination">PC</div>
+            <strong>Получатель</strong>
+            <span>Сеть назначения</span>
+          </div>
+
+        </div>
+
+        <div class="diagram-explanation">
+          <span class="explanation-icon">i</span>
+          <p>
+            В этом условном примере маршрут проходит через три
+            маршрутизатора. RIP сравнивает количество переходов
+            у доступных маршрутов и выбирает путь с наименьшей метрикой.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="details-grid">
+
+        <article class="detail-info-card">
+          <div class="detail-card-icon pink-icon">+</div>
+          <h3>Преимущества RIP</h3>
+
+          <ul class="styled-list">
+            <li>Простая настройка и понятный принцип работы.</li>
+            <li>Небольшие требования к вычислительным ресурсам.</li>
+            <li>Подходит для небольших сетей с простой структурой.</li>
+          </ul>
+        </article>
+
+        <article class="detail-info-card">
+          <div class="detail-card-icon muted-icon">−</div>
+          <h3>Недостатки RIP</h3>
+
+          <ul class="styled-list">
+            <li>Максимум 15 переходов до сети назначения.</li>
+            <li>Сходимость обычно медленнее, чем у OSPF.</li>
+            <li>Количество переходов не отражает пропускную способность канала.</li>
+          </ul>
+        </article>
+
+      </div>
+
+
+      <div class="protocol-facts">
+
+        <div class="fact-item">
+          <span>01</span>
+          <div>
+            <strong>Тип протокола</strong>
+            <p>Вектор расстояния</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>02</span>
+          <div>
+            <strong>Метрика</strong>
+            <p>Количество переходов</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>03</span>
+          <div>
+            <strong>RIPv2</strong>
+            <p>Поддерживает CIDR и VLSM</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>04</span>
+          <div>
+            <strong>Обновления</strong>
+            <p>Периодическая передача маршрутов</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="technical-note">
+        Примечание: классический RIP использует UDP, порт 520.
+        RIPng для IPv6 использует UDP, порт 521.
+      </p>
+
+    </section>
+
+
+    <!-- OSPF -->
+    <section class="content-section" id="ospf">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">03 / LINK STATE</p>
+          <h2>Протокол OSPF</h2>
+          <p class="section-description">
+            Протокол состояния каналов, который рассчитывает
+            кратчайший путь с учётом стоимости маршрута.
+          </p>
+        </div>
+
+        <span class="section-number">03</span>
+      </div>
+
+      <div class="protocol-layout ospf-layout">
+
+        <div class="protocol-main">
+          <div class="protocol-badge badge-aqua">OSPF · IPv4 / IPv6</div>
+
+          <h3>Open Shortest Path First</h3>
+
+          <p>
+            OSPF — протокол динамической маршрутизации состояния каналов.
+            Маршрутизаторы обмениваются информацией о состоянии
+            сетевых соединений и строят карту топологии сети.
+          </p>
+
+          <p>
+            На основе этой информации каждый маршрутизатор выполняет
+            алгоритм Дейкстры (SPF — Shortest Path First), чтобы
+            определить кратчайшие пути до известных сетей.
+          </p>
+
+          <p>
+            В качестве метрики OSPF использует стоимость (cost).
+            Она может учитывать пропускную способность канала:
+            в распространённых реализациях стоимость рассчитывается
+            на основе настроенной опорной пропускной способности
+            и скорости интерфейса.
+          </p>
+
+          <div class="protocol-note aqua-note">
+            <span>✦</span>
+            <div>
+              <strong>Запомни</strong>
+              <p>OSPF строит карту сети и рассчитывает путь с минимальной стоимостью.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="metric-card metric-aqua">
+          <div class="metric-header">
+            <span>АЛГОРИТМ</span>
+            <span class="metric-icon">⌘</span>
+          </div>
+
+          <div class="metric-word">SPF</div>
+
+          <h3>алгоритм Дейкстры</h3>
+
+          <p>
+            Рассчитывает кратчайшие пути от маршрутизатора
+            до известных сетей на основе стоимости соединений.
+          </p>
+
+          <div class="metric-pills">
+            <span>Топология</span>
+            <span>Стоимость</span>
+            <span>Маршрут</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="subsection-heading">
+        <span class="subsection-icon aqua-sub-icon">⌘</span>
+
+        <div>
+          <h3>Как работает OSPF?</h3>
+          <p>Маршрутизаторы обмениваются сведениями о состоянии каналов.</p>
+        </div>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-topline">
+          <span>СХЕМА 02</span>
+          <span class="diagram-status status-aqua">
+            <i></i> LINK STATE
+          </span>
+        </div>
+
+        <div class="ospf-diagram">
+
+          <div class="ospf-router">
+            <span>R1</span>
+            <small>Router</small>
+          </div>
+
+          <div class="ospf-link">
+            <span class="cost-label">Cost 10</span>
+            <div class="ospf-link-line"></div>
+          </div>
+
+          <div class="ospf-router ospf-router-main">
+            <span>R2</span>
+            <small>Router</small>
+          </div>
+
+          <div class="ospf-link">
+            <span class="cost-label">Cost 5</span>
+            <div class="ospf-link-line"></div>
+          </div>
+
+          <div class="ospf-router">
+            <span>R3</span>
+            <small>Router</small>
+          </div>
+
+        </div>
+
+        <div class="topology-note">
+          <div class="topology-mini-icon">✦</div>
+
+          <div>
+            <strong>Карта топологии сети</strong>
+            <p>
+              OSPF собирает сведения о состоянии каналов и использует
+              их для расчёта маршрутов. Подписи Cost на схеме условные:
+              в реальной сети стоимость зависит от настроек интерфейсов.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="subsection-heading">
+        <span class="subsection-icon aqua-sub-icon">◈</span>
+
+        <div>
+          <h3>Области OSPF</h3>
+          <p>Разделение сети помогает упростить управление большой инфраструктурой.</p>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-main">
+          <div class="area-circle">
+            <span>0</span>
+            <small>BACKBONE</small>
+          </div>
+
+          <div>
+            <h3>Area 0 — магистральная область</h3>
+
+            <p>
+              В многообластной структуре OSPF область 0 выполняет
+              роль магистрали, к которой подключаются остальные области.
+              Это помогает организовать обмен маршрутной информацией
+              между частями сети.
+            </p>
+          </div>
+        </div>
+
+        <div class="area-branches">
+          <div class="area-branch">
+            <span class="branch-dot pink-dot"></span>
+            <div>
+              <strong>Area 1</strong>
+              <p>Первая область сети</p>
+            </div>
+          </div>
+
+          <div class="area-branch">
+            <span class="branch-dot aqua-dot"></span>
+            <div>
+              <strong>Area 2</strong>
+              <p>Вторая область сети</p>
+            </div>
+          </div>
+
+          <div class="area-branch">
+            <span class="branch-dot lilac-dot"></span>
+            <div>
+              <strong>Area 3</strong>
+              <p>Дополнительная область</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="details-grid">
+
+        <article class="detail-info-card">
+          <div class="detail-card-icon aqua-icon">+</div>
+          <h3>Преимущества OSPF</h3>
+
+          <ul class="styled-list">
+            <li>Хорошо подходит для средних и крупных сетей.</li>
+            <li>Быстро реагирует на изменения топологии при нормальных условиях работы.</li>
+            <li>Поддерживает разделение сети на области.</li>
+            <li>Учитывает стоимость маршрута, а не только число переходов.</li>
+          </ul>
+        </article>
+
+        <article class="detail-info-card">
+          <div class="detail-card-icon muted-icon">−</div>
+          <h3>Недостатки OSPF</h3>
+
+          <ul class="styled-list">
+            <li>Сложнее в настройке, чем RIP.</li>
+            <li>Требует больше ресурсов для хранения топологии и расчётов.</li>
+            <li>Ошибки в настройке областей и параметров интерфейсов могут нарушать маршрутизацию.</li>
+          </ul>
+        </article>
+
+      </div>
+
+
+      <div class="protocol-facts">
+
+        <div class="fact-item">
+          <span>01</span>
+          <div>
+            <strong>Тип протокола</strong>
+            <p>Состояние каналов</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>02</span>
+          <div>
+            <strong>Метрика</strong>
+            <p>Стоимость маршрута (cost)</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>03</span>
+          <div>
+            <strong>Алгоритм</strong>
+            <p>Дейкстры (SPF)</p>
+          </div>
+        </div>
+
+        <div class="fact-item">
+          <span>04</span>
+          <div>
+            <strong>Организация сети</strong>
+            <p>Поддержка областей</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="technical-note">
+        Примечание: OSPFv2 применяется для IPv4, а OSPFv3
+        изначально разработан для IPv6. OSPF использует IP
+        с номером протокола 89 и не работает поверх TCP или UDP.
+      </p>
+
+    </section>
+
+
+    <!-- COMPARISON -->
+    <section class="content-section section-tinted" id="comparison">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">04 / COMPARISON</p>
+          <h2>RIP vs OSPF</h2>
+          <p class="section-description">
+            Два протокола решают одну задачу, но используют
+            разные подходы к выбору маршрута.
+          </p>
+        </div>
+
+        <span class="section-number">04</span>
+      </div>
+
+      <div class="comparison-intro">
+        <div class="comparison-symbol symbol-rip">R</div>
+
+        <div class="comparison-side">
+          <strong>RIP</strong>
+          <span>Считает переходы</span>
+        </div>
+
+        <div class="comparison-divider">
+          <span>VS</span>
+        </div>
+
+        <div class="comparison-side">
+          <strong>OSPF</strong>
+          <span>Рассчитывает стоимость</span>
+        </div>
+
+        <div class="comparison-symbol symbol-ospf">O</div>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Характеристика</th>
+              <th>RIP</th>
+              <th>OSPF</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Тип протокола</td>
+              <td>Вектор расстояния</td>
+              <td>Состояние каналов</td>
+            </tr>
+
+            <tr>
+              <td>Основная метрика</td>
+              <td>Количество переходов</td>
+              <td>Стоимость маршрута</td>
+            </tr>
+
+            <tr>
+              <td>Выбор маршрута</td>
+              <td>Меньше переходов</td>
+              <td>Меньшая суммарная стоимость</td>
+            </tr>
+
+            <tr>
+              <td>Максимальная метрика</td>
+              <td>15 переходов</td>
+              <td>Нет аналогичного ограничения в 15 переходов</td>
+            </tr>
+
+            <tr>
+              <td>Сходимость</td>
+              <td>Обычно медленнее</td>
+              <td>Обычно быстрее</td>
+            </tr>
+
+            <tr>
+              <td>Масштаб сети</td>
+              <td>Небольшие сети</td>
+              <td>Средние и крупные сети</td>
+            </tr>
+
+            <tr>
+              <td>Сложность настройки</td>
+              <td>Низкая</td>
+              <td>Выше, чем у RIP</td>
+            </tr>
+
+            <tr>
+              <td>Алгоритм</td>
+              <td>Беллмана — Форда в распределённой форме</td>
+              <td>Дейкстры (SPF)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="choice-grid">
+
+        <article class="choice-card choice-rip">
+          <span class="choice-label">ВЫБИРАЙ RIP</span>
+          <h3>Когда сеть небольшая</h3>
+
+          <p>
+            Если структура сети проста, количество маршрутизаторов
+            невелико и важна простота конфигурации, RIP может
+            быть достаточным решением.
+          </p>
+        </article>
+
+        <article class="choice-card choice-ospf">
+          <span class="choice-label">ВЫБИРАЙ OSPF</span>
+          <h3>Когда сеть сложнее</h3>
+
+          <p>
+            Если сеть содержит много маршрутизаторов, несколько
+            путей передачи и требует более гибкого управления,
+            OSPF обычно подходит лучше.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="info-banner comparison-banner">
+        <span class="info-banner-icon">✦</span>
+
+        <p>
+          <strong>Важно:</strong>
+          OSPF не всегда выбирает физически самый быстрый путь.
+          Он выбирает маршрут с наименьшей суммарной стоимостью
+          согласно настроенным метрикам.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-section" id="summary">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">05 / SUMMARY</p>
+          <h2>Что нужно запомнить?</h2>
+          <p class="section-description">
+            Основные идеи темы в нескольких коротких тезисах.
+          </p>
+        </div>
+
+        <span class="section-number">05</span>
+      </div>
+
+      <div class="summary-list">
+
+        <div class="summary-item">
+          <span class="summary-number">01</span>
+          <div>
+            <h3>Маршрутизация</h3>
+            <p>
+              Определяет путь передачи пакетов к сети назначения.
+            </p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">02</span>
+          <div>
+            <h3>RIP</h3>
+            <p>
+              Использует количество переходов. Метрика 16
+              означает недостижимую сеть.
+            </p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">03</span>
+          <div>
+            <h3>OSPF</h3>
+            <p>
+              Использует сведения о состоянии каналов и алгоритм
+              Дейкстры для расчёта маршрутов.
+            </p>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <span class="summary-number">04</span>
+          <div>
+            <h3>Главное различие</h3>
+            <p>
+              RIP сравнивает количество переходов, а OSPF —
+              суммарную стоимость маршрута.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="final-card">
+        <div class="final-decoration">♥</div>
+
+        <p class="section-kicker">COMPNET · TOPIC 05</p>
+
+        <h2>Теперь ты знаешь,<br>как работают RIP и OSPF.</h2>
+
+        <p>
+          Эти протоколы помогают маршрутизаторам выбирать пути
+          и поддерживать связь между сетями.
+        </p>
+
+        <a href="../index.html" class="hero-button final-button">
+          Вернуться к темам
+          <span>→</span>
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="../index.html">
+      CompNet<span>♥</span>
+    </a>
+
+    <p>Компьютерные сети · Тема 05</p>
+
+    <a href="#top" class="footer-top">↑ Наверх</a>
+  </footer>
+
+</body>
+</html>

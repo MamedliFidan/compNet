@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 04 — Протоколы TCP/UDP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="topic4css.css">
+  <script src="topic4js.js" defer></script>
+  
+  <link rel="icon" type="image/png" href="../img/icon.png?v=4">
+  <link rel="shortcut icon" type="image/png" href="../img/icon.png?v=4">
+</head>
+
+<body>
+  <header class="topbar page-width">
+    <a href="../index.html" class="brand">
+      <span class="brand-icon">↯</span>
+      <span>NET<span>/</span>WORK</span>
+    </a>
+
+    <span class="header-label">PROTOCOL LAB / 04</span>
+
+    <a href="../index.html" class="back-link">← На главную</a>
+  </header>
+
+  <main class="page-width">
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          САМОСТОЯТЕЛЬНАЯ РАБОТА · ТЕМА 04
+        </div>
+
+        <p class="hero-kicker">HOW DATA TRAVELS</p>
+
+        <h1>TCP<span>/</span>UDP<span class="pink-period">.</span></h1>
+
+        <h2>Два протокола.<br>Разные принципы связи.</h2>
+
+        <p class="hero-description">
+          Разбираемся, как приложения обмениваются данными,
+          чем отличаются TCP и UDP и как устроена UDP-диаграмма.
+        </p>
+
+        <a href="#protocols" class="hero-button">
+          Исследовать протоколы <span>↓</span>
+        </a>
+
+        <div class="hero-tags">
+          <span>№ 10</span>
+          <span>TRANSPORT LAYER</span>
+          <span>TCP · UDP</span>
+        </div>
+      </div>
+
+      <div class="protocol-visual">
+        <div class="visual-ring ring-one"></div>
+        <div class="visual-ring ring-two"></div>
+
+        <div class="protocol-window">
+          <div class="window-top">
+            <div class="window-dots">
+              <i></i><i></i><i></i>
+            </div>
+            <span>PACKET MONITOR</span>
+            <span class="monitor-status">LIVE</span>
+          </div>
+
+          <div class="connection-row">
+            <div class="endpoint">
+              <span class="endpoint-icon">PC</span>
+              <span>CLIENT</span>
+            </div>
+
+            <div class="transfer">
+              <span class="transfer-line"></span>
+              <span class="transfer-packet">◆</span>
+              <span class="transfer-label">DATA</span>
+            </div>
+
+            <div class="endpoint endpoint-server">
+              <span class="endpoint-icon">SRV</span>
+              <span>SERVER</span>
+            </div>
+          </div>
+
+          <div class="packet-preview">
+            <div class="preview-line">
+              <span>PROTOCOL</span>
+              <strong>UDP / TCP</strong>
+            </div>
+            <div class="preview-line">
+              <span>DATA FLOW</span>
+              <strong class="green-text">ACTIVE ●</strong>
+            </div>
+            <div class="preview-line">
+              <span>NETWORK</span>
+              <strong>CONNECTED</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-code code-one">UDP 17</div>
+        <div class="floating-code code-two">TCP 6</div>
+        <div class="floating-code code-three">DATA →</div>
+      </div>
+    </section>
+
+    <section class="protocol-section" id="protocols">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">TRANSPORT LAYER</p>
+          <h2>Выбери свой <span>протокол.</span></h2>
+        </div>
+
+        <p class="section-description">
+          Нажми на карточку, чтобы узнать принцип работы,
+          преимущества и особенности протокола.
+        </p>
+      </div>
+
+      <div class="protocol-grid">
+
+        <button class="protocol-card tcp-card"
+                type="button"
+                data-protocol="tcp"
+                aria-expanded="false">
+
+          <div class="card-top">
+            <span class="card-index">01 / TCP</span>
+            <span class="status-badge">НАДЁЖНОСТЬ</span>
+          </div>
+
+          <div class="protocol-symbol tcp-symbol">
+            <span>↔</span>
+            <i></i><i></i><i></i>
+          </div>
+
+          <h3>TCP</h3>
+
+          <p class="protocol-full-name">
+            Transmission Control Protocol
+          </p>
+
+          <p class="protocol-summary">
+            Соединение, подтверждение получения и упорядоченная
+            доставка данных.
+          </p>
+
+          <div class="card-footer">
+            <span>Подробнее о TCP</span>
+            <span class="arrow">↗</span>
+          </div>
+        </button>
+
+        <button class="protocol-card udp-card"
+                type="button"
+                data-protocol="udp"
+                aria-expanded="false">
+
+          <div class="card-top">
+            <span class="card-index">02 / UDP</span>
+            <span class="status-badge">МИНИМУМ ЗАДЕРЖКИ</span>
+          </div>
+
+          <div class="protocol-symbol udp-symbol">
+            <span>⚡</span>
+            <i></i><i></i><i></i>
+          </div>
+
+          <h3>UDP</h3>
+
+          <p class="protocol-full-name">
+            User Datagram Protocol
+          </p>
+
+          <p class="protocol-summary">
+            Передача отдельных датаграмм без установления
+            соединения и гарантии доставки.
+          </p>
+
+          <div class="card-footer">
+            <span>Подробнее об UDP</span>
+            <span class="arrow">↗</span>
+          </div>
+        </button>
+
+      </div>
+
+      <div class="detail-panel" id="detail-panel" hidden>
+        <div class="detail-header">
+          <div>
+            <p class="section-kicker">PROTOCOL EXPLAINED</p>
+            <h3 id="detail-title"></h3>
+          </div>
+
+          <button type="button"
+                  class="close-button"
+                  id="close-detail"
+                  aria-label="Закрыть">×</button>
+        </div>
+
+        <p id="detail-text"></p>
+
+        <div class="fact-box">
+          <span class="fact-icon">✦</span>
+          <div>
+            <strong>Главное</strong>
+            <p id="detail-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="datagram-section">
+      <div class="datagram-heading">
+        <div>
+          <p class="section-kicker">INSIDE THE PACKET</p>
+          <h2>Анатомия <span>UDP-диаграммы.</span></h2>
+        </div>
+
+        <p>
+          UDP-заголовок содержит четыре поля по 16 бит.
+          Общий размер заголовка — 8 байт.
+        </p>
+      </div>
+
+      <div class="datagram-card">
+        <div class="diagram-top">
+          <span>UDP DATAGRAM STRUCTURE</span>
+          <span class="diagram-tag">RFC 768</span>
+        </div>
+
+        <div class="bit-ruler">
+          <span>0</span>
+          <span>15</span>
+          <span>16</span>
+          <span>31</span>
+        </div>
+
+        <div class="udp-field-grid">
+          <button class="udp-field field-one"
+                  data-field="source"
+                  type="button">
+            <span>01</span>
+            <strong>Порт источника</strong>
+            <small>Source Port</small>
+            <b>16 бит</b>
+          </button>
+
+          <button class="udp-field field-two"
+                  data-field="destination"
+                  type="button">
+            <span>02</span>
+            <strong>Порт назначения</strong>
+            <small>Destination Port</small>
+            <b>16 бит</b>
+          </button>
+
+          <button class="udp-field field-three"
+                  data-field="length"
+                  type="button">
+            <span>03</span>
+            <strong>Длина</strong>
+            <small>Length</small>
+            <b>16 бит</b>
+          </button>
+
+          <button class="udp-field field-four"
+                  data-field="checksum"
+                  type="button">
+            <span>04</span>
+            <strong>Контрольная сумма</strong>
+            <small>Checksum</small>
+            <b>16 бит</b>
+          </button>
+        </div>
+
+        <div class="payload">
+          <div class="payload-icon">▤</div>
+          <div>
+            <strong>DATA / PAYLOAD</strong>
+            <p>Полезные данные приложения</p>
+          </div>
+          <span>Переменный размер</span>
+        </div>
+
+        <div class="field-explanation" id="field-explanation" aria-live="polite">
+          <span class="explanation-mark">↖</span>
+          <p>Нажми на любое поле схемы, чтобы узнать его назначение.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <p class="section-kicker">QUICK COMPARISON</p>
+      <h2>TCP vs <span>UDP.</span></h2>
+
+      <div class="comparison-table">
+        <div class="comparison-row comparison-head">
+          <span>Характеристика</span>
+          <span>TCP</span>
+          <span>UDP</span>
+        </div>
+
+        <div class="comparison-row">
+          <span>Соединение</span>
+          <span>Устанавливается</span>
+          <span>Не устанавливается</span>
+        </div>
+
+        <div class="comparison-row">
+          <span>Гарантия доставки</span>
+          <span>Да, в рамках протокола</span>
+          <span>Нет</span>
+        </div>
+
+        <div class="comparison-row">
+          <span>Порядок данных</span>
+          <span>Сохраняется</span>
+          <span>Не гарантируется</span>
+        </div>
+
+        <div class="comparison-row">
+          <span>Типичные применения</span>
+          <span>Веб, передача файлов</span>
+          <span>DNS, голос, видео, игры</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-width footer">
+    <span>NET/WORK · КОМПЬЮТЕРНЫЕ СЕТИ</span>
+    <a href="../index.html">← Все темы</a>
+  </footer>
+</body>
+</html>

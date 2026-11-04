@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 01 — Адресация и коммутация</title>
+
+  <link rel="icon" type="image/png" href="../img/icon.png?v=4">
+  <link rel="shortcut icon" type="image/png" href="../img/icon.png?v=4">
+</head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="topic1css.css">
+  <script src="topic1js.js" defer></script>
+</head>
+<body>
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar page-width">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">⌘</span>
+      <span>NET<span class="brand-slash">/</span>WORK</span>
+    </a>
+
+    <a class="back-link" href="../index.html">
+      ← На главную
+    </a>
+  </header>
+
+  <main class="page-width">
+
+    <section class="topic-hero">
+      <div class="hero-text">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          САМОСТОЯТЕЛЬНАЯ РАБОТА · РАЗДЕЛ 01
+        </div>
+
+        <h1>Адресация<br>и <span>коммутация.</span></h1>
+
+        <p class="hero-description">
+          Как устройства находят друг друга в сети и как данные
+          проходят путь от отправителя к получателю.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-pill"><span>03</span> подтемы</span>
+          <span class="meta-pill"><span>01</span> учебный раздел</span>
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-orbit orbit-a"></div>
+        <div class="visual-orbit orbit-b"></div>
+        <div class="visual-glow"></div>
+
+        <div class="data-card">
+          <div class="data-card-top">
+            <span>DATA FLOW</span>
+            <span class="live-dot"></span>
+          </div>
+
+          <div class="network-map">
+            <div class="network-line line-a"></div>
+            <div class="network-line line-b"></div>
+            <div class="network-line line-c"></div>
+            <div class="network-line line-d"></div>
+
+            <div class="device device-pc">⌘</div>
+            <div class="device device-router">↔</div>
+            <div class="device device-server">▤</div>
+            <div class="device device-phone">▯</div>
+
+            <span class="packet packet-one"></span>
+            <span class="packet packet-two"></span>
+            <span class="packet packet-three"></span>
+          </div>
+
+          <div class="data-card-bottom">
+            <strong>Connected</strong>
+            <span>передача данных</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subtopics" id="subtopics">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">СОДЕРЖАНИЕ РАЗДЕЛА</p>
+          <h2>Изучим по шагам</h2>
+        </div>
+
+        <p class="section-description">
+          Выбери подтему, чтобы прочитать краткое объяснение.
+        </p>
+      </div>
+
+      <div class="subtopic-grid">
+
+        <button class="subtopic-card card-coral"
+                type="button"
+                data-subtopic="addressing"
+                aria-expanded="false">
+
+          <span class="card-number">01</span>
+          <span class="card-icon">◎</span>
+
+          <span class="card-title">
+            Адресация узлов сети. Коммутация. Типы коммутации
+          </span>
+
+          <span class="card-bottom">
+            <span>Открыть описание</span>
+            <span class="card-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="subtopic-card card-aqua"
+                type="button"
+                data-subtopic="packets"
+                aria-expanded="false">
+
+          <span class="card-number">02</span>
+          <span class="card-icon">⬡</span>
+
+          <span class="card-title">Коммутация пакетов</span>
+
+          <span class="card-bottom">
+            <span>Открыть описание</span>
+            <span class="card-arrow">↗</span>
+          </span>
+        </button>
+
+        <button class="subtopic-card card-pink"
+                type="button"
+                data-subtopic="circuits"
+                aria-expanded="false">
+
+          <span class="card-number">03</span>
+          <span class="card-icon">⇄</span>
+
+          <span class="card-title">Коммутация каналов</span>
+
+          <span class="card-bottom">
+            <span>Открыть описание</span>
+            <span class="card-arrow">↗</span>
+          </span>
+        </button>
+
+      </div>
+
+      <div class="detail-panel" id="detail-panel" hidden>
+        <div class="detail-heading">
+          <div>
+            <p class="section-kicker">КРАТКОЕ ОБЪЯСНЕНИЕ</p>
+            <h3 id="detail-title">Подтема</h3>
+          </div>
+
+          <button class="close-detail"
+                  id="close-detail"
+                  type="button"
+                  aria-label="Закрыть описание">×</button>
+        </div>
+
+        <p id="detail-text"></p>
+
+        <div class="detail-note">
+          <span>✦</span>
+          <span id="detail-note"></span>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="page-width footer">
+    <span>NET/WORK · Компьютерные сети</span>
+    <a href="../index.html">Вернуться к 9 темам ↑</a>
+  </footer>
+
+</body>
+</html>
